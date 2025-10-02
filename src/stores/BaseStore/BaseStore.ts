@@ -1,14 +1,14 @@
 import { ChartType } from 'chart.js';
 import { create, StateCreator } from 'zustand';
 
-import statistics from '~/data/mock-statistics.json'
-import users from '~/data/mock-users.json'
+import statistics from '~/data/mock-statistics.json';
+import users from '~/data/mock-users.json';
 import { StatisticEntry, User } from '~/types/domain';
 
-const MAX_TIMEOUT = 10 * 1000; // 10 seconds
+const MAX_TIMEOUT = 1000 * 5; // 5 seconds
 
 type StoreModelName = 'statistics' | 'users';
-type RequestEndpoint<TStoreModelName extends StoreModelName> = TStoreModelName extends 'statistics' 
+type RequestEndpoint<TStoreModelName extends StoreModelName> = TStoreModelName extends 'statistics'
   ? `/api/statistics` | `/api/statistics?type=${ChartType}`
   : `/api/users?displayName=${string}`;
 
@@ -19,14 +19,14 @@ export interface BaseStore<TStoreFor extends StoreModelName> {
 }
 
 export const createBaseStore = <
-  TStoreModelName extends StoreModelName, 
+  TStoreModelName extends StoreModelName,
   TCachedItems extends MockApiResultMap[TStoreModelName]
 >(
   storeFor: TStoreModelName,
-  initializer: StateCreator<BaseStore<TStoreModelName>, [], [], BaseStore<TStoreModelName>>
+  initializer?: StateCreator<BaseStore<TStoreModelName>, [], [], BaseStore<TStoreModelName>>
 ) => {
   return create<BaseStore<TStoreModelName>>((getState, setState, store) => {
-    const initialized = initializer(getState, setState, store);
+    const initialized = initializer?.(getState, setState, store) ?? {};
 
     return {
       ...initialized,
@@ -40,14 +40,16 @@ export const createBaseStore = <
         this.__cache.set(key, item);
         return item;
       }
-    }
+    };
   });
-}
+};
+
+export default createBaseStore;
 
 type MockApiResultMap = {
   statistics: StatisticEntry[];
   users: User[];
-}
+};
 
 async function mockApiRequest<TStoreFor extends StoreModelName>(storeFor: TStoreFor, key: RequestEndpoint<TStoreFor>): Promise<MockApiResultMap[TStoreFor]> {
   await new Promise(resolve => setTimeout(resolve, Math.random() * MAX_TIMEOUT));
@@ -65,7 +67,12 @@ async function mockApiRequest<TStoreFor extends StoreModelName>(storeFor: TStore
     case 'users': {
       const displayName = key.split('=')[1].toLowerCase();
       if (displayName) {
-        const filtered = users.filter(user => user.displayName.toLowerCase().includes(displayName));
+        const filtered = users
+          .map(user => ({
+            ...user,
+            lastLoginTimestamp: Date.now()
+          }))
+          .filter(user => user.displayName.toLowerCase().includes(displayName));
         return filtered as MockApiResultMap[TStoreFor];
       }
 
