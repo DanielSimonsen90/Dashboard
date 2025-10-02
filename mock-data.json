@@ -1,0 +1,304 @@
+[
+  {
+    "title": "Open Critical Risks",
+    "subtitle": "Currently unmitigated items at severity CRIT",
+    "type": "number",
+    "options": {
+      "responsive": true,
+      "display": {
+        "prefix": "",
+        "suffix": ""
+      }
+    },
+    "chartData": {
+      "labels": [
+        "Count"
+      ],
+      "datasets": [
+        {
+          "label": "Open Critical",
+          "data": [
+            23
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "title": "Patch Compliance — Critical CVEs",
+    "subtitle": "Patched vs total endpoints (last scan)",
+    "type": "numberProcentage",
+    "options": {
+      "responsive": true,
+      "display": {
+        "prefix": "",
+        "suffix": "%",
+        "derivePercentageFromPair": true
+      }
+    },
+    "chartData": {
+      "labels": [
+        "Patched",
+        "Total"
+      ],
+      "datasets": [
+        {
+          "label": "Endpoints",
+          "data": [
+            186,
+            200
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "title": "Incident Types by Category",
+    "subtitle": "Distribution of reported incidents this quarter",
+    "type": "doughnut",
+    "options": {
+      "responsive": true,
+      "plugins": {
+        "legend": {
+          "position": "right"
+        },
+        "title": {
+          "display": true,
+          "text": "Incident Breakdown"
+        }
+      }
+    },
+    "chartData": {
+      "labels": [
+        "Phishing",
+        "Data Breach",
+        "Insider Threat",
+        "Malware",
+        "Physical Security"
+      ],
+      "datasets": [
+        {
+          "label": "Incidents",
+          "data": [
+            32,
+            18,
+            7,
+            15,
+            10
+          ],
+          "backgroundColor": [
+            "hashtag#FF6384",
+            "hashtag#36A2EB",
+            "hashtag#FFCE56",
+            "hashtag#4BC0C0",
+            "hashtag#9966FF"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "title": "Risk Heatmap by Department",
+    "subtitle": "Average risk scores across teams",
+    "type": "bar",
+    "options": {
+      "responsive": true,
+      "scales": {
+        "y": {
+          "beginAtZero": true,
+          "title": {
+            "display": true,
+            "text": "Risk Score"
+          }
+        }
+      },
+      "plugins": {
+        "legend": {
+          "display": false
+        },
+        "title": {
+          "display": true,
+          "text": "Department Risk Levels"
+        }
+      }
+    },
+    "chartData": {
+      "labels": [
+        "Finance",
+        "HR",
+        "IT",
+        "Operations",
+        "Legal"
+      ],
+      "datasets": [
+        {
+          "label": "Risk Score",
+          "data": [
+            85,
+            70,
+            90,
+            65,
+            75
+          ],
+          "backgroundColor": [
+            "hashtag#FF4500",
+            "hashtag#FF8C00",
+            "hashtag#FFD700",
+            "hashtag#9ACD32",
+            "hashtag#32CD32"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "title": "Compliance Task Completion",
+    "subtitle": "Percentage of tasks closed on time",
+    "type": "pie",
+    "options": {
+      "responsive": true,
+      "plugins": {
+        "legend": {
+          "position": "bottom"
+        },
+        "title": {
+          "display": true,
+          "text": "Compliance Tasks Status"
+        }
+      }
+    },
+    "chartData": {
+      "labels": [
+        "Completed",
+        "Overdue",
+        "In Progress"
+      ],
+      "datasets": [
+        {
+          "label": "Tasks",
+          "data": [
+            120,
+            35,
+            50
+          ],
+          "backgroundColor": [
+            "hashtag#28a745",
+            "hashtag#dc3545",
+            "hashtag#ffc107"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "title": "Top Vulnerabilities Detected",
+    "subtitle": "By frequency in last security scan",
+    "type": "bar",
+    "options": {
+      "indexAxis": "y",
+      "responsive": true,
+      "scales": {
+        "x": {
+          "beginAtZero": true
+        }
+      },
+      "plugins": {
+        "legend": {
+          "display": false
+        },
+        "title": {
+          "display": true,
+          "text": "Vulnerability Frequency"
+        }
+      }
+    },
+    "chartData": {
+      "labels": [
+        "SQL Injection",
+        "XSS",
+        "Weak Passwords",
+        "Unpatched Software",
+        "Open Ports"
+      ],
+      "datasets": [
+        {
+          "label": "Vulnerabilities",
+          "data": [
+            45,
+            30,
+            60,
+            20,
+            15
+          ],
+          "backgroundColor": [
+            "hashtag#007bff",
+            "hashtag#6610f2",
+            "hashtag#6f42c1",
+            "hashtag#e83e8c",
+            "hashtag#fd7e14"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "title": "Risk Trend Over Time",
+    "subtitle": "Monthly aggregate risk score",
+    "type": "line",
+    "options": {
+      "responsive": true,
+      "scales": {
+        "y": {
+          "min": 50,
+          "max": 100,
+          "title": {
+            "display": true,
+            "text": "Risk Score"
+          }
+        },
+        "x": {
+          "title": {
+            "display": true,
+            "text": "Month"
+          }
+        }
+      },
+      "plugins": {
+        "legend": {
+          "display": false
+        },
+        "title": {
+          "display": true,
+          "text": "Risk Trend (6 Months)"
+        }
+      }
+    },
+    "chartData": {
+      "labels": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "datasets": [
+        {
+          "label": "Risk Score",
+          "data": [
+            75,
+            82,
+            78,
+            88,
+            90,
+            85
+          ],
+          "borderColor": "hashtag#FF6384",
+          "backgroundColor": "rgba(255, 99, 132, 0.2)",
+          "fill": true,
+          "tension": 0.3
+        }
+      ]
+    }
+  }
+]
