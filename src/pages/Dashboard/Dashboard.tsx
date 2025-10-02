@@ -32,7 +32,7 @@ export default function Dashboard() {
           </header>
           <main>
             <Suspense run={() => StatisticsStore.request('/api/statistics')}
-              loading={<div>Loading...</div>}
+              loading={<DashboardContent skeletonRender statistics={StatisticsStore.skeleton} />}
             >
               {statistics => <DashboardContent statistics={statistics} />}
             </Suspense>
