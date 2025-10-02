@@ -87,11 +87,11 @@
             10
           ],
           "backgroundColor": [
-            "hashtag#FF6384",
-            "hashtag#36A2EB",
-            "hashtag#FFCE56",
-            "hashtag#4BC0C0",
-            "hashtag#9966FF"
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#9966FF"
           ]
         }
       ]
@@ -141,11 +141,11 @@
             75
           ],
           "backgroundColor": [
-            "hashtag#FF4500",
-            "hashtag#FF8C00",
-            "hashtag#FFD700",
-            "hashtag#9ACD32",
-            "hashtag#32CD32"
+            "#FF4500",
+            "#FF8C00",
+            "#FFD700",
+            "#9ACD32",
+            "#32CD32"
           ]
         }
       ]
@@ -182,9 +182,9 @@
             50
           ],
           "backgroundColor": [
-            "hashtag#28a745",
-            "hashtag#dc3545",
-            "hashtag#ffc107"
+            "#28a745",
+            "#dc3545",
+            "#ffc107"
           ]
         }
       ]
@@ -231,11 +231,11 @@
             15
           ],
           "backgroundColor": [
-            "hashtag#007bff",
-            "hashtag#6610f2",
-            "hashtag#6f42c1",
-            "hashtag#e83e8c",
-            "hashtag#fd7e14"
+            "#007bff",
+            "#6610f2",
+            "#6f42c1",
+            "#e83e8c",
+            "#fd7e14"
           ]
         }
       ]
@@ -293,7 +293,7 @@
             90,
             85
           ],
-          "borderColor": "hashtag#FF6384",
+          "borderColor": "#FF6384",
           "backgroundColor": "rgba(255, 99, 132, 0.2)",
           "fill": true,
           "tension": 0.3
