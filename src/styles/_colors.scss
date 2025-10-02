@@ -1,0 +1,16 @@
+$brand: hsl(219, 18%, 35%);
+$brand-muted: hsl(219, 18%, 25%);
+
+$background-primary: #eee;
+
+$foreground-primary: #111;
+$foreground-muted: #545766;
+
+%colors {
+  --brand: #{$brand};
+  --brand--muted: #{$brand-muted};
+
+  --background-primary: #{$background-primary};
+  --foreground-primary: #{$foreground-primary};
+  --foreground-muted: #{$foreground-muted};
+}
