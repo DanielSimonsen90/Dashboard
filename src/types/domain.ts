@@ -1,5 +1,5 @@
 interface BaseEntity {
-  id: string;
+  // id: string;
 }
 
 export interface User extends BaseEntity {
@@ -64,7 +64,7 @@ export interface ChartOptions {
   };
 }
 
-export interface StatisticEntry {
+export interface StatisticEntry extends BaseEntity {
   title: string;
   subtitle: string;
   type: ChartType;
