@@ -1,0 +1,11 @@
+%typography {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  :is(h1, h2, h3, p) {
+    --margin: .5rem;
+    margin-block-start: var(--margin);
+    margin-block-end: var(--margin);
+  }
+}

@@ -1,0 +1,8 @@
+@use './elements';
+@use './colors';
+@use './typography';
+
+body {
+  @extend %colors;
+  @extend %typography;
+}

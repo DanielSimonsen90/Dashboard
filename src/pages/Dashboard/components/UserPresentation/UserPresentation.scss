@@ -1,0 +1,23 @@
+.user-presentation {
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    font-size: 1rem;
+
+  }
+
+  &__avatar {
+    --size: 2.25rem;
+    width: var(--size);
+    height: var(--size);
+    // aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
+
+  &__last-login {
+    margin: 0;
+    color: var(--foreground-muted);
+  }
+}
