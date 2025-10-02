@@ -5,4 +5,6 @@
 body {
   @extend %colors;
   @extend %typography;
+
+  margin: 1rem 2rem;
 }

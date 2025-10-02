@@ -1,16 +1,22 @@
 $brand: hsl(219, 18%, 35%);
 $brand-muted: hsl(219, 18%, 25%);
+$brand-contrast: #3E70DD;
 
 $background-primary: #eee;
 
 $foreground-primary: #111;
 $foreground-muted: #545766;
 
+$border-color: #E6E9EC;
+
 %colors {
   --brand: #{$brand};
   --brand--muted: #{$brand-muted};
+  --brand-contrast: #{$brand-contrast};
 
   --background-primary: #{$background-primary};
   --foreground-primary: #{$foreground-primary};
   --foreground-muted: #{$foreground-muted};
+
+  --border-color: #{$border-color};
 }
