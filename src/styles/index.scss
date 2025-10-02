@@ -7,4 +7,10 @@ body {
   @extend %typography;
 
   margin: 1rem 2rem;
+
+  &,
+  #root {
+    min-height: 100vh;
+    min-width: 100vw;
+  }
 }

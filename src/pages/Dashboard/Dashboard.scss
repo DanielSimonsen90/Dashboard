@@ -1,4 +1,12 @@
 #dashboard-page {
+  display: grid;
+  place-items: center;
+
+  &:has(main) {
+    display: block;
+    place-items: unset;
+  }
+  
   .dashboard__header {
     display: flex;
     align-items: center;

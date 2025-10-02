@@ -52,7 +52,9 @@ type MockApiResultMap = {
 };
 
 async function mockApiRequest<TStoreFor extends StoreModelName>(storeFor: TStoreFor, key: RequestEndpoint<TStoreFor>): Promise<MockApiResultMap[TStoreFor]> {
-  await new Promise(resolve => setTimeout(resolve, Math.random() * MAX_TIMEOUT));
+  const timeout = Math.random() * MAX_TIMEOUT;
+  // const timeout = 20 * 1000; // 20 seconds
+  await new Promise(resolve => setTimeout(resolve, timeout));
 
   switch (storeFor) {
     case 'statistics': {
