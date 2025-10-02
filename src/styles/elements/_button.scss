@@ -11,4 +11,8 @@ button {
   &:hover {
     background-color: var(--brand--muted);
   }
+
+  &:focus-visible {
+    outline: 5px solid var(--brand-contrast);
+  }
 }

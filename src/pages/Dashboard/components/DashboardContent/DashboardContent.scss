@@ -1,0 +1,13 @@
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+
+  padding: 0;
+  margin: 2em 0;
+
+  li {
+    display: flex;
+    list-style: none;
+  }
+}

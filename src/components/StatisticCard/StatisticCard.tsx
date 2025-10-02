@@ -8,10 +8,10 @@ export default function StatisticCard({ entry }: Props) {
   const { title, subtitle, ...data } = entry;
   
   return (
-    <div className="statistic-entry">
-      <h2 className="statistic-entry__title">{title}</h2>
-      <p className="statistic-entry__subtitle">{subtitle}</p>
-      <div className="statistic-entry__chart-data">
+    <div className="statistic-card">
+      <h2 className="statistic-card__title">{title}</h2>
+      <p className="statistic-card__subtitle">{subtitle}</p>
+      <div className="statistic-card__chart-data">
         <code>
           {JSON.stringify(data, null, 2)}
         </code>
