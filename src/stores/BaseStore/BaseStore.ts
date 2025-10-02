@@ -19,14 +19,15 @@ export interface BaseStore<TStoreFor extends StoreModelName> {
 }
 
 export const createBaseStore = <
+  TStore extends BaseStore<TStoreModelName>,
   TStoreModelName extends StoreModelName,
-  TCachedItems extends MockApiResultMap[TStoreModelName]
+  TCachedItems extends MockApiResultMap[TStoreModelName] = MockApiResultMap[TStoreModelName]
 >(
   storeFor: TStoreModelName,
-  initializer?: StateCreator<BaseStore<TStoreModelName>, [], [], BaseStore<TStoreModelName>>
+  initializer?: StateCreator<Omit<TStore, keyof BaseStore<TStoreModelName>>, [], [], Omit<TStore, keyof BaseStore<TStoreModelName>>>
 ) => {
-  return create<BaseStore<TStoreModelName>>((getState, setState, store) => {
-    const initialized = initializer?.(getState, setState, store) ?? {};
+  return create<TStore>((getState, setState, store) => {
+    const initialized = initializer?.(getState, setState, store) ?? {} as TStore;
 
     return {
       ...initialized,
@@ -40,7 +41,7 @@ export const createBaseStore = <
         this.__cache.set(key, item);
         return item;
       }
-    };
+    } as any as TStore;
   });
 };
 
@@ -52,7 +53,9 @@ type MockApiResultMap = {
 };
 
 async function mockApiRequest<TStoreFor extends StoreModelName>(storeFor: TStoreFor, key: RequestEndpoint<TStoreFor>): Promise<MockApiResultMap[TStoreFor]> {
-  await new Promise(resolve => setTimeout(resolve, Math.random() * MAX_TIMEOUT));
+  const timeout = Math.random() * MAX_TIMEOUT;
+  // const timeout = storeFor === 'users' ? 0 : 20 * 1000; // 20 seconds
+  await new Promise(resolve => setTimeout(resolve, timeout));
 
   switch (storeFor) {
     case 'statistics': {

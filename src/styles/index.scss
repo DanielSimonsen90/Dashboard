@@ -6,5 +6,12 @@ body {
   @extend %colors;
   @extend %typography;
 
-  margin: 1rem 2rem;
+  box-sizing: border-box;
+
+  --margin-top-bottom: 1rem;
+  --margin-left-right: 2rem;
+  margin: var(--margin-top-bottom) var(--margin-left-right);
+
+  min-height: calc(100vh - 2 * var(--margin-top-bottom));
+  min-width: calc(100vw - 2 * var(--margin-left-right));
 }

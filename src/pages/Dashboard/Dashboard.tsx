@@ -4,6 +4,7 @@ import { useStatisticsStore, useUserStore } from '~/stores';
 import Suspense from '~/components/Suspense';
 
 import { ButtonPanel, DashboardContent, UserPresentation } from './components';
+import Spinner from '~/components/Spinner';
 
 export default function Dashboard() {
   const UserStore = useUserStore();
@@ -16,7 +17,12 @@ export default function Dashboard() {
 
   return (
     <Suspense run={() => UserStore.request('/api/users?displayName=danhosaur').then(users => users[0])}
-      loading={<div className="user-presentation user-presentation--loading">Loading your dashboard...</div>}
+      loading={
+      <div className="user-presentation user-presentation--loading">
+        <Spinner />
+        <p>Loading your dashboard...</p>
+      </div>
+    }
     >
       {user => (
         <div id='dashboard-page'>
@@ -26,7 +32,7 @@ export default function Dashboard() {
           </header>
           <main>
             <Suspense run={() => StatisticsStore.request('/api/statistics')}
-              loading={<div>Loading...</div>}
+              loading={<DashboardContent skeletonRender statistics={StatisticsStore.skeleton} />}
             >
               {statistics => <DashboardContent statistics={statistics} />}
             </Suspense>

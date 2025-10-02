@@ -3,14 +3,15 @@ import { StatisticEntry } from "~/types/domain";
 
 type Props = {
   statistics: Array<StatisticEntry>
+  skeletonRender?: boolean
 }
 
-export default function DashboardContent({ statistics }: Props) {
+export default function DashboardContent({ statistics, skeletonRender }: Props) {
   return (
     <ul className="dashboard-content">
-      {statistics.map(entry => (
-        <li key={`${entry.title}-${entry.subtitle}-${entry.type}`}>
-          <StatisticCard entry={entry} />
+      {statistics.map((entry, i) => (
+        <li key={`${entry.title}-${entry.subtitle}-${entry.type}-${i}`}>
+          <StatisticCard entry={entry} skeletonRender={skeletonRender} />
         </li>
       ))}
     </ul>
