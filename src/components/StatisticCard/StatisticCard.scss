@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
 
-  &__title {
+  &__title, &__subtitle {
     --margin: 0;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: fit-content;
   }
 
   &__subtitle {
     color: var(--foreground-muted);
-    --margin: 0;
   }
 
   &__chart-data {

@@ -5,14 +5,12 @@
     gap: .5rem;
 
     font-size: 1rem;
-
   }
 
   &__avatar {
     --size: 2.25rem;
     width: var(--size);
     height: var(--size);
-    // aspect-ratio: 1/1;
     border-radius: 50%;
   }
 
@@ -20,4 +18,15 @@
     margin: 0;
     color: var(--foreground-muted);
   }
+
+    @media screen and (max-width: 600px) {
+      &__header {
+        flex-direction: column;
+        text-align: center;
+      }
+  
+      &__avatar {
+        --size: 5rem;
+      }
+    }
 }
