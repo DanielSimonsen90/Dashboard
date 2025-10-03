@@ -43,7 +43,7 @@ export const createBaseStore = <
         // If request key is not cached, make a mock API request and update cache accordingly
         const item = await mockApiRequest(storeFor, key) as TCachedItems;
         this.__cache.set(key, item);
-        
+
         return item;
       }
     } as any as TStore;
@@ -61,7 +61,7 @@ export default createBaseStore;
  * @returns Array of returned store model, based on the store name
  */
 async function mockApiRequest<TStoreFor extends StoreModelName>(
-  storeFor: TStoreFor, 
+  storeFor: TStoreFor,
   key: RequestEndpoint<TStoreFor>
 ): Promise<MockApiResultMap[TStoreFor]> {
   //  Timeout variable(s) to simulate network latency for demonstration purposes
@@ -83,18 +83,19 @@ async function mockApiRequest<TStoreFor extends StoreModelName>(
       return statistics as MockApiResultMap[TStoreFor];
     }
     case 'users': {
+      const mappedUsers = users
+        .map(user => ({
+          ...user,
+          lastLoginTimestamp: Date.now() // Due to mocked data being static, the login timestamp is updated to the current time
+        }));
+
       const displayName = key.split('=')[1].toLowerCase();
       if (displayName) {
-        const filtered = users
-          .map(user => ({
-            ...user,
-            lastLoginTimestamp: Date.now() // Due to mocked data being static, the login timestamp is updated to the current time
-          }))
-          .filter(user => user.displayName.toLowerCase().includes(displayName));
+        const filtered = mappedUsers.filter(user => user.displayName.toLowerCase().includes(displayName));
         return filtered as MockApiResultMap[TStoreFor];
       }
 
-      return users as MockApiResultMap[TStoreFor];
+      return mappedUsers as MockApiResultMap[TStoreFor];
     }
   }
 }

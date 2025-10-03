@@ -16,7 +16,7 @@ export default function Dashboard() {
   const onButtonClick = useCallback((action: ButtonPanelAction) => { }, []);
 
   return (
-    <Suspense run={() => UserStore.request('/api/users?displayName=danhosaur').then(users => users[0])}
+    <Suspense run={() => UserStore.request('/api/users?displayName=daniel simonsen').then(users => users[0])}
       loading={
         <div className="user-presentation user-presentation--loading">
           <Spinner />
