@@ -40,7 +40,7 @@ Additionally, I've installed the following 3rd party packages:
 My folder structure consists of various sub-folders within the src directory. These will be explained further down the page.
 
 To ensure code splitting for easy readability and maintainability, each component has its own folder with the following files:
-* index.ts - Main export file for the component and additional internal types, hooks or constants if necessary. This is so imports look cleaner as '~/components/ComponentName' instead of '~/components/ComponentName/ComponentName'. This file also imports the component's styles.
+* index.ts - Main export file for the component and additional internal types, hooks or constants if necessary. This is so imports look cleaner as '\~/components/ComponentName' instead of '\~/components/ComponentName/ComponentName'. This file also imports the component's styles.
 * ComponentName.tsx - The main component file where everything is imported aside from styles.
 * ComponentName.scss - The component's styles, using BEM methodology and SCSS nesting for better organization.
 
