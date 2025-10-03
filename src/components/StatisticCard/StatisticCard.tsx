@@ -1,15 +1,23 @@
-import { StatisticEntry } from "~/types/domain";
+import classNames from "classnames";
 
 import Chart from 'chart.js/auto';
 import { CategoryScale } from "chart.js";
-import ChartCanvas from "./components/ChartCanvas";
-import classNames from "classnames";
 
+import { StatisticEntry } from "~/types/domain";
+
+import ChartCanvas from "./components/ChartCanvas";
+
+// Since this component is the only place that makes use of chart.js, registration of chart types is done here
+// If the app were to grow, this should be moved to a more central place or even a provider
 Chart.register(CategoryScale);
 
 type Props = {
   entry: StatisticEntry;
-  skeletonRender: boolean
+
+  /**
+   * The statistic card will show a gradient skeleton glow effect if true
+   */
+  skeletonRender?: boolean
 };
 
 export default function StatisticCard({ entry, skeletonRender }: Props) {

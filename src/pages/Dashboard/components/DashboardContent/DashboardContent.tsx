@@ -11,7 +11,7 @@ export default function DashboardContent({ statistics, skeletonRender }: Props) 
     <ul className="dashboard-content">
       {statistics.map((entry, i) => (
         <li key={`${entry.title}-${entry.subtitle}-${entry.type}-${i}`}>
-          <StatisticCard entry={entry} skeletonRender={skeletonRender} />
+          <StatisticCard {...{ entry, skeletonRender }} />
         </li>
       ))}
     </ul>

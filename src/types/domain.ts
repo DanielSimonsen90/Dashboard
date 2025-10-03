@@ -1,15 +1,28 @@
+/**
+ * Entities/Models from the backend are usually identifiably by id property.
+ * For this assignment, it appears the mock-data does not follow that structure, 
+ * however, for good practice, a BaseEntity interface is still defined for scalability.
+ */
 interface BaseEntity {
   // id: string;
 }
 
+/**
+ * User model as defined by design requirements
+ */
 export interface User extends BaseEntity {
   displayName: string;
   avatarUrl: string;
   lastLoginTimestamp: number;
 }
 
+/**
+ * TypeScript type for chart types supported by Chart.js and custom types
+ * Note that "numberProcentage" is intentionally misspelled to match the mock data received - which is a fun detail I didn't want to change 🤣
+ */
 export type ChartType = 'number' | 'numberProcentage' | 'doughnut' | 'bar' | 'pie' | 'line';
 
+// #region Chart data types from mock-data
 export interface ChartDataset {
   label: string;
   data: number[];
@@ -63,7 +76,11 @@ export interface ChartOptions {
     };
   };
 }
+// #endregion
 
+/**
+ * StatisticEntry model as defined by the mock data received from the (mock) backend
+ */
 export interface StatisticEntry extends BaseEntity {
   title: string;
   subtitle: string;

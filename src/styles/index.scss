@@ -3,15 +3,18 @@
 @use './typography';
 
 body {
+  // Implement SCSS partials defined in respective design areas
   @extend %colors;
   @extend %typography;
 
   box-sizing: border-box;
 
+  // Design has a margin on the body to allow the content to breathe
   --margin-top-bottom: 1rem;
   --margin-left-right: 2rem;
   margin: var(--margin-top-bottom) var(--margin-left-right);
 
+  // Ensure the body takes the full viewport for immersive experience - ensure to subtract the margins to avoid overflow
   min-height: calc(100vh - 2 * var(--margin-top-bottom));
   min-width: calc(100vw - 2 * var(--margin-left-right));
 }

@@ -1,14 +1,39 @@
+/**
+* Main "brand" color of the design
+*/
 $brand: hsl(219, 18%, 35%);
+/**
+* Muted variant of the brand color - this is used for button hovers
+*/
 $brand-muted: hsl(219, 18%, 25%);
+/**
+* Contrast color for the brand outside of the gray-scale color pallette - used for highlights and accents i.e. focus-within psuedo class for buttons
+*/
 $brand-contrast: #3E70DD;
 
+/**
+* Primary background color of the design
+*/
 $background-primary: #eee;
 
+/**
+* Primary foreground color of the design
+*/
 $foreground-primary: #111;
+/**
+* Muted foreground color of the design - used for secondary text and less important information like subtitles
+*/
 $foreground-muted: #545766;
 
+/**
+* Border color used for borders and dividers - from the design, this is the border color used for the statistic cards.
+*/
 $border-color: #E6E9EC;
 
+/**
+* CSS variables for colors to be globally accessed in any underlying HTML element.
+* These are used throughout the app to ensure a consistent color scheme
+*/
 %colors {
   --brand: #{$brand};
   --brand--muted: #{$brand-muted};

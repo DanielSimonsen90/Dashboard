@@ -1,3 +1,4 @@
+// If any div element contains a direct child of .spinner, force it to center the spinner in both axis.
 div:has(>.spinner) {
   display: flex;
   justify-content: center;

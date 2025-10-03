@@ -1,50 +1,75 @@
-# React + TypeScript + Vite
+# Human Risks Dashboard Challenge
+[by Daniel Simonsen](https://danielsimonsen90-portfolio.netlify.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project created to follow the design and criteria provided by Julius Bendt. During the interview, I provided some feedback on the design before receiving the assignment. These feedback points were not implemented, since I wanted to follow the design as closely as possible.
+Despite this, I replaced the design's Human Risks logo with the user's avatar image for a better UX and to avoid looking for a clean version of the Human Risks logo.
 
-Currently, two official plugins are available:
+![Design preview](https://github.com/DanielSimonsen90/Dashboard/blob/main/resources/Design.png?raw=true)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🗒️ Implementation Status 
 
-## Expanding the ESLint configuration
+### ✅ Completed Requirements
+- **Multiple chart support**: Implemented Bar, Line, Pie, Doughnut charts + custom Number/"Procentage" displays
+- **Endpoint mocking with spinners/skeletons**: Custom Suspense component with skeleton states and gradient animations
+- **Code quality**: TypeScript, SCSS with BEM methodology, modular component structure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### ⚠️ Partially Implemented
+- **Addition/Removal of charts**: UI buttons present but handlers not implemented
 
-- Configure the top-level `parserOptions` property like this:
+### ❌ Not Implemented  
+- **Chart resizing**: Charts are implemented, but manual resizing not yet available
+- **Drag & Drop support**: Architecture prepared but not implemented (would use react-beautiful-dnd)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Installation
+To run the project, make sure you download or clone the repository, then run:
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📁 Project setup
+Although the company works in Angular and wishes to migrate to Tailwind, these are not technologies I have extensive experience with at the moment, so the project is created using a Vite template with TypeScript, React and SCSS.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Additionally, I've installed the following 3rd party packages:
+* FontAwesome: Since no design manual was provided, FontAwesome icons were used to mock the icons in the design.
+* Chart.js & React-Chartjs-2: The mock data provided was already heavily modified to fit the chart.js format, so to save time, I've used Chart.js and React-Chartjs-2 to draw the charts easily.
+* Zustand: To manage asynchronous state and store it globally, I've used Zustand to create a simple store system.
+* Classnames: In some components, conditional class names are necessary for a better developer experience
+* Although not installed, beautiful-react-dnd is an intuitive drag-and-drop library that I would have used to implement drag-and-drop functionality for dashboard widget scaling.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### 📁 My folder structure
+My folder structure consists of various sub-folders within the src directory. These will be explained further down the page.
+
+To ensure code splitting for easy readability and maintainability, each component has its own folder with the following files:
+* index.ts - Main export file for the component and additional internal types, hooks or constants if necessary. This is so imports look cleaner as '~/components/ComponentName' instead of '~/components/ComponentName/ComponentName'. This file also imports the component's styles.
+* ComponentName.tsx - The main component file where everything is imported aside from styles.
+* ComponentName.scss - The component's styles, using BEM methodology and SCSS nesting for better organization.
+
+Additionally, a component folder can hold ComponentNameTypes, ComponentNameConstants or a hooks/components directory for specific internal hooks or sub-components.
+
+The project is structured with the following folders:
+
+#### src/components
+The components directory contains all intended reusable components, that is or could be used in multiple places of the application.
+
+#### src/data
+The data directory contains mock data used to simulate API responses. In a real-world application, this would be replaced with actual API calls and the data directory would not exist.
+
+#### src/pages
+Although the project only consists of a single dashboard page, the structure should support a whole application regardless, and therefore a pages directory is created to hold our only page.
+
+#### src/stores
+To easily manage asynchronous state like user and statistic data, a zustand-based store system is created. These stores work hand-in-hand with the custom-made "Suspense" component to ensure a smooth loading experience.
+This is also where the mocked API calls are simulated.
+
+#### src/styles
+Despite each component having its own custom styles, a global styles directory is still necessary to hold global styles and SCSS variables and mixins.
+Additionally, these could be stored within the App.scss file (or move the styles folder in the App directory), but for better src folder structure, I prefer to keep them there.
+
+#### src/types
+Custom application/domain types used to define data structures.
+Types in this instance could very well have been stored in a single file instead of a whole folder, however, for scalability purposes, a folder with multiple files seems more appropriate.
+
+## 📚 References
+* [Dashboard design](https://github.com/DanielSimonsen90/Dashboard/blob/main/resources/Design.png)
+* [Dashboard criteria](https://github.com/DanielSimonsen90/Dashboard/blob/main/resources/Criteria.md)
