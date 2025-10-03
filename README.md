@@ -33,7 +33,6 @@ Although the company works in Angular and wishes to migrate to Tailwind, these a
 Additionally, I've installed the following 3rd party packages:
 * FontAwesome: Since no design manual was provided, FontAwesome icons were used to mock the icons in the design.
 * Chart.js & React-Chartjs-2: The mock data provided was already heavily modified to fit the chart.js format, so to save time, I've used Chart.js and React-Chartjs-2 to draw the charts easily.
-* Zustand: To manage asynchronous state and store it globally, I've used Zustand to create a simple store system.
 * Classnames: In some components, conditional class names are necessary for a better developer experience
 * Although not installed, beautiful-react-dnd is an intuitive drag-and-drop library that I would have used to implement drag-and-drop functionality for dashboard widget scaling.
 
@@ -58,9 +57,8 @@ The data directory contains mock data used to simulate API responses. In a real-
 #### src/pages
 Although the project only consists of a single dashboard page, the structure should support a whole application regardless, and therefore a pages directory is created to hold our only page.
 
-#### src/stores
-To easily manage asynchronous state like user and statistic data, a zustand-based store system is created. These stores work hand-in-hand with the custom-made "Suspense" component to ensure a smooth loading experience.
-This is also where the mocked API calls are simulated.
+#### src/providers
+To easily manage asynchronous state like user and statistic data, a context-based provider system is created. These providers ensure that the child components of a provider will not be shown until the data is fully loaded. This is also where the mocked API calls are simulated.
 
 #### src/styles
 Despite each component having its own custom styles, a global styles directory is still necessary to hold global styles and SCSS variables and mixins.
@@ -68,7 +66,6 @@ Additionally, these could be stored within the App.scss file (or move the styles
 
 #### src/types
 Custom application/domain types used to define data structures.
-Types in this instance could very well have been stored in a single file instead of a whole folder, however, for scalability purposes, a folder with multiple files seems more appropriate.
 
 ## 📚 References
 * [Dashboard design](https://github.com/DanielSimonsen90/Dashboard/blob/main/resources/Design.png)

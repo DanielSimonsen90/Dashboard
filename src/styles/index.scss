@@ -7,6 +7,7 @@ body {
   @extend %colors;
   @extend %typography;
 
+  display: grid;
   box-sizing: border-box;
 
   // Design has a margin on the body to allow the content to breathe

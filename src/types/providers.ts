@@ -12,24 +12,17 @@ export type RequestEndpoint<TStoreModelName extends StoreModelName> = (
 );
 
 /**
- * When creating a new Store - all stores already contains this base functionality
- */
-export interface BaseStore<TStoreFor extends StoreModelName> {
-  __cache: Map<string, MockApiResultMap[TStoreFor]>;
-
-
-  /**
-   * Request data from the mock API
-   * @param key Mock-endpoint to request data from
-   * @returns The requested data - either from cache or from the mock API
-   */
-  request(key: RequestEndpoint<TStoreFor>): Promise<MockApiResultMap[TStoreFor]>;
-}
-
-/**
  * Utility type to extract correct return type from the mock API based on the store name
  */
 export type MockApiResultMap = {
   statistics: StatisticEntry[];
-  users: User[];
+  users: User;
+};
+
+/**
+ * Basic filter options which could be a way that statistic data is filtered
+ */
+export type StatisticsFilterOptions = {
+  dateRange?: [number, number]; // The mock data does not support date ranges, but in a real-world scenario, this would be a way to filter statistical data by date range
+  type?: ChartType;
 };
